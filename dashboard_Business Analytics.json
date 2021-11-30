@@ -1,0 +1,1947 @@
+{
+  "chartExports": [
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-592A4AE",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Abandonment  Rate by Region",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "AreaChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": null
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "# API Calls",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Abandonment Rate",
+              "label": "C",
+              "paletteIndex": 13,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', rollup='sum').sum(by=['region']).publish(label='A', enable=False)\nC = (A).scale(0.01).publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "RED Metrics",
+        "id": "FFV-5-SA0AA",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "RED Metrics by Service",
+        "options": {
+          "markdown": "RED Metrics by Service\n\nR - Requests <br>\nE - Errors <br>\nD - Duration <br>",
+          "type": "Text"
+        },
+        "packageSpecifications": "",
+        "programText": "",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-5-UA4AE",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Abandonment Rate",
+        "options": {
+          "colorBy": "Scale",
+          "colorScale": null,
+          "colorScale2": [
+            {
+              "gt": null,
+              "gte": 68,
+              "lt": null,
+              "lte": null,
+              "paletteIndex": 16
+            },
+            {
+              "gt": null,
+              "gte": null,
+              "lt": 68,
+              "lte": null,
+              "paletteIndex": 20
+            }
+          ],
+          "maximumPrecision": 2,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "sf_demo.num_calls - Sum - Sum(1d)",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "A*.0000034",
+              "label": "C",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "A*.000005",
+              "label": "D",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "C/D - Scale:100",
+              "label": "E",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": "",
+              "valueSuffix": "%",
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "None",
+          "showSparkLine": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "timestampHidden": false,
+          "type": "SingleValue",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', rollup='sum').sum().sum(over='1d').publish(label='A', enable=False)\nC = (A*.0000034).publish(label='C', enable=False)\nD = (A*.000005).publish(label='D', enable=False)\nE = (C/D).scale(100).publish(label='E')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-6O-A0AY",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Performance vs Revenue",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              },
+              {
+                "enabled": true,
+                "property": "region"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_server_id"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Revenue",
+              "label": "D",
+              "paletteIndex": 13,
+              "plotType": "ColumnChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Latency",
+              "label": "C",
+              "paletteIndex": 8,
+              "plotType": "LineChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls',rollup='rate').sum().mean(over='5m').publish(label='A', enable=False)\nD = (1000000/A).publish(label='D')\nC = (A*.001).publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-6kaA4AA",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Abandonment Rate by Device",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              },
+              {
+                "enabled": true,
+                "property": "region"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_server_id"
+              },
+              {
+                "enabled": true,
+                "property": "device_type"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Device Type",
+              "label": "C",
+              "paletteIndex": null,
+              "plotType": "AreaChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', filter=filter('device_type', 'Mobile Phone', 'Wearable', 'GPS'),rollup='rate').sum(by=['device_type']).mean(over='5m').publish(label='A', enable=False)\nC = (4/A*10000).publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-7TfA0AY",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Cost per API Call",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Metric",
+          "defaultPlotType": "AreaChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": null
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "Deposit - Hourly Cost",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Deposit - Cost per minute",
+              "label": "B",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Deposit - # Calls / minute",
+              "label": "C",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Add to Cart",
+              "label": "D",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": "$",
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Transfer - Hourly Cost",
+              "label": "E",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Transfer - Cost per minute",
+              "label": "F",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Transfer - # Calls / minute",
+              "label": "G",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "List Product",
+              "label": "H",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": "$",
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Withdraw - Hourly Cost",
+              "label": "I",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Withdraw - Cost per minute",
+              "label": "J",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Withdraw - # Calls / minute",
+              "label": "K",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Checkout",
+              "label": "L",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": "$",
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "showEventLines": false,
+          "stacked": true,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', filter=filter('service', 'deposit'),rollup='rate').sum(by=['aws_instance_id', 'service']).count().scale(0.42).publish(label='A', enable=False)\nB = (A/60).publish(label='B', enable=False)\nC = data('sf_demo.num_calls', filter=filter('service', 'deposit'), rollup='sum').sum().sum(over='1m').publish(label='C', enable=False)\nD = (B/C).publish(label='D')\nE = data('sf_demo.num_calls', filter=filter('service', 'transfer'),rollup='rate').sum(by=['aws_instance_id', 'service']).count().scale(0.665).publish(label='E', enable=False)\nF = (E/60).publish(label='F', enable=False)\nG = data('sf_demo.num_calls', filter=filter('service', 'deposit'), rollup='sum').sum().sum(over='1m').publish(label='G', enable=False)\nH = (F/G).publish(label='H')\nI = data('sf_demo.num_calls', filter=filter('service', 'withdraw'),rollup='rate').sum(by=['aws_instance_id', 'service']).count().scale(0.266).publish(label='I', enable=False)\nJ = (I/60).publish(label='J', enable=False)\nK = data('sf_demo.num_calls', filter=filter('service', 'withdraw'), rollup='sum').sum().sum(over='1m').publish(label='K', enable=False)\nL = (J/K).publish(label='L')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-7TfA4AI",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Latency by service",
+        "options": {
+          "colorBy": "Scale",
+          "colorScale2": [
+            {
+              "gt": 2300,
+              "gte": null,
+              "lt": null,
+              "lte": 3000,
+              "paletteIndex": 16
+            },
+            {
+              "gt": 2000,
+              "gte": null,
+              "lt": null,
+              "lte": 2300,
+              "paletteIndex": 18
+            },
+            {
+              "gt": null,
+              "gte": 0,
+              "lt": null,
+              "lte": 2000,
+              "paletteIndex": 20
+            }
+          ],
+          "hideMissingValues": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              }
+            ]
+          },
+          "maximumPrecision": null,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "Radial",
+          "sortBy": "",
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "List",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.mean_latency_ms').percentile(pct=99, by=['api_name3']).mean(over='5m').scale(100).publish(label='A')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-7t_A0Ac",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Errors/Sec",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              },
+              {
+                "enabled": true,
+                "property": "region"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_server_id"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "A*.001",
+              "label": "C",
+              "paletteIndex": 8,
+              "plotType": "ColumnChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls',rollup='rate').sum().mean(over='5m').publish(label='A', enable=False)\nC = (A*.001).publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-7uBAwAI",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Shopping Carts Created",
+        "options": {
+          "colorBy": "Dimension",
+          "colorScale": null,
+          "colorScale2": null,
+          "maximumPrecision": 3,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "sf_demo.num_calls - Sum - Sum(1d)",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "A*.000005",
+              "label": "C",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "None",
+          "showSparkLine": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "timestampHidden": false,
+          "type": "SingleValue",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', rollup='sum').sum().sum(over='1d').publish(label='A', enable=False)\nC = (A*.000005).publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-7uDAwAE",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "p99 Latency by Region",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": 2782,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "D",
+              "paletteIndex": null
+            }
+          ],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": false,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              },
+              {
+                "enabled": true,
+                "property": "api_name4"
+              },
+              {
+                "enabled": true,
+                "property": "region"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "p99 Latency",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "SLA Threshold",
+              "label": "C",
+              "paletteIndex": 5,
+              "plotType": "AreaChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "showEventLines": true,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.mean_latency_ms').percentile(pct=99, by=['region']).scale(100).publish(label='A')\nB = events(eventType='code_deploy').publish(label='B', enable=False)\nC = (A/A).scale(2800).publish(label='C', enable=False)\nD = events(eventType='DGAkhbpAgAA__P99 API Latency has suddenly changed for 1 or more services').publish(label='D')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-71TA4AA",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "API Calls/sec",
+        "options": {
+          "colorBy": "Dimension",
+          "colorScale2": null,
+          "hideMissingValues": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": false,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": false,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              }
+            ]
+          },
+          "maximumPrecision": 4,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "Sparkline",
+          "sortBy": "",
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "List",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls',rollup='rate').sum(by=['api_name3']).mean(over='5m').publish(label='A')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-8UtAwAM",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Average Revenue",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "AreaChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              },
+              {
+                "enabled": true,
+                "property": "region"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "1000000/A",
+              "label": "C",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": "$",
+              "valueSuffix": "dollars",
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls',rollup='rate').sum().mean(over='5m').publish(label='A', enable=False)\nC = (1000000/A).publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-8UtA0AE",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Errors vs. Abandonment Rate",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "AreaChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": null
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "# API Calls",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Errors",
+              "label": "E",
+              "paletteIndex": 8,
+              "plotType": "ColumnChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Abandonment Rate",
+              "label": "C",
+              "paletteIndex": 1,
+              "plotType": "LineChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', rollup='sum').sum().publish(label='A', enable=False)\nE = (A/10000).publish(label='E')\nC = (A/2).scale(0.01).timeshift('15s').mean(over='1m').publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-8m8A0AA",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "# Hosts vs. Latency vs. Abandonment Rate",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              },
+              {
+                "enabled": true,
+                "property": "region"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_server_id"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Hosts",
+              "label": "C",
+              "paletteIndex": 2,
+              "plotType": "ColumnChart",
+              "valuePrefix": "",
+              "valueSuffix": "Hosts",
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Latency",
+              "label": "D",
+              "paletteIndex": 1,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            },
+            {
+              "displayName": "Abandonment Rate",
+              "label": "E",
+              "paletteIndex": 8,
+              "plotType": "LineChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            },
+            {
+              "displayName": "sf_demo.num_calls - Sum",
+              "label": "F",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Abandonment Rate",
+              "label": "G",
+              "paletteIndex": 8,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls',rollup='rate').min().publish(label='A', enable=False)\nC = (10000/A).publish(label='C')\nD = (A/2).mean(over='5m').scale(0.1).publish(label='D')\nE = (A/2).mean(over='10m').scale(0.1).publish(label='E')\nF = data('sf_demo.num_calls', rollup='sum').sum().publish(label='F', enable=False)\nG = (F/2).scale(0.01).publish(label='G', enable=False)",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-9UwAwAA",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "# Orders",
+        "options": {
+          "colorBy": "Dimension",
+          "colorScale": null,
+          "colorScale2": null,
+          "maximumPrecision": 1,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "sf_demo.num_calls - Sum - Sum(1d)",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "A*.000002",
+              "label": "C",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "None",
+          "showSparkLine": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "timestampHidden": false,
+          "type": "SingleValue",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', rollup='sum').sum().sum(over='1d').publish(label='A', enable=False)\nC = (A*.000002).publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV-9UwA4AY",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Errors/sec",
+        "options": {
+          "colorBy": "Dimension",
+          "colorScale2": null,
+          "hideMissingValues": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              }
+            ]
+          },
+          "maximumPrecision": 4,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "A*.001",
+              "label": "C",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "Sparkline",
+          "sortBy": "",
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "List",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls',rollup='rate').sum(by=['api_name3']).mean(over='5m').publish(label='A', enable=False)\nC = (A*.001).publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    }
+  ],
+  "dashboardExport": {
+    "dashboard": {
+      "authorizedWriters": null,
+      "chartDensity": "DEFAULT",
+      "charts": [
+        {
+          "chartId": "FFV-9UwAwAA",
+          "column": 4,
+          "height": 1,
+          "row": 0,
+          "width": 4
+        },
+        {
+          "chartId": "FFV-5-UA4AE",
+          "column": 8,
+          "height": 1,
+          "row": 0,
+          "width": 4
+        },
+        {
+          "chartId": "FFV-7uBAwAI",
+          "column": 0,
+          "height": 1,
+          "row": 0,
+          "width": 4
+        },
+        {
+          "chartId": "FFV-7TfA4AI",
+          "column": 8,
+          "height": 1,
+          "row": 1,
+          "width": 4
+        },
+        {
+          "chartId": "FFV-6kaA4AA",
+          "column": 0,
+          "height": 1,
+          "row": 1,
+          "width": 4
+        },
+        {
+          "chartId": "FFV-592A4AE",
+          "column": 4,
+          "height": 1,
+          "row": 1,
+          "width": 4
+        },
+        {
+          "chartId": "FFV-6O-A0AY",
+          "column": 0,
+          "height": 1,
+          "row": 2,
+          "width": 6
+        },
+        {
+          "chartId": "FFV-8UtA0AE",
+          "column": 6,
+          "height": 1,
+          "row": 2,
+          "width": 6
+        },
+        {
+          "chartId": "FFV-8UtAwAM",
+          "column": 0,
+          "height": 1,
+          "row": 3,
+          "width": 6
+        },
+        {
+          "chartId": "FFV-7uDAwAE",
+          "column": 6,
+          "height": 1,
+          "row": 3,
+          "width": 6
+        },
+        {
+          "chartId": "FFV-8m8A0AA",
+          "column": 0,
+          "height": 1,
+          "row": 4,
+          "width": 12
+        },
+        {
+          "chartId": "FFV-7t_A0Ac",
+          "column": 9,
+          "height": 1,
+          "row": 5,
+          "width": 3
+        },
+        {
+          "chartId": "FFV-9UwA4AY",
+          "column": 6,
+          "height": 1,
+          "row": 5,
+          "width": 3
+        },
+        {
+          "chartId": "FFV-5-SA0AA",
+          "column": 0,
+          "height": 1,
+          "row": 5,
+          "width": 3
+        },
+        {
+          "chartId": "FFV-71TA4AA",
+          "column": 3,
+          "height": 1,
+          "row": 5,
+          "width": 3
+        },
+        {
+          "chartId": "FFV-7TfA0AY",
+          "column": 0,
+          "height": 1,
+          "row": 6,
+          "width": 6
+        }
+      ],
+      "created": 0,
+      "creator": null,
+      "customProperties": null,
+      "description": "",
+      "discoveryOptions": null,
+      "eventOverlays": null,
+      "filters": {
+        "sources": null,
+        "time": null,
+        "variables": [
+          {
+            "alias": "Device Type",
+            "applyIfExists": false,
+            "description": "null",
+            "preferredSuggestions": [],
+            "property": "device_type",
+            "propertyMappings": [
+              "device_type"
+            ],
+            "replaceOnly": true,
+            "required": false,
+            "restricted": false,
+            "value": ""
+          },
+          {
+            "alias": "Region",
+            "applyIfExists": false,
+            "description": "null",
+            "preferredSuggestions": [],
+            "property": "region",
+            "propertyMappings": [
+              "region"
+            ],
+            "replaceOnly": false,
+            "required": false,
+            "restricted": false,
+            "value": ""
+          }
+        ]
+      },
+      "groupId": "FFV-cgyAwAU",
+      "groupName": "Don-Business Analytics",
+      "id": "FFV-8kGA4AU",
+      "lastUpdated": 0,
+      "lastUpdatedBy": null,
+      "maxDelayOverride": null,
+      "name": "Business Analytics",
+      "permissions": null,
+      "selectedEventOverlays": [
+        {
+          "eventSignal": {
+            "detectorId": null,
+            "eventSearchText": "Outlier Detection -  Abandon Rate Detector",
+            "eventType": "detectorEvents"
+          },
+          "overlayId": null,
+          "sources": []
+        }
+      ],
+      "tags": null
+    }
+  },
+  "hashCode": 598796047,
+  "id": "FFV-8kGA4AU",
+  "modelVersion": 1,
+  "packageType": "DASHBOARD"
+}

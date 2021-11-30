@@ -1,0 +1,1502 @@
+{
+  "chartExports": [
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_CKJA0AQ",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "p99 Latency by Service",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": 2782,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "B",
+              "paletteIndex": null
+            },
+            {
+              "displayName": "New Plot",
+              "label": "D",
+              "paletteIndex": null
+            }
+          ],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": false,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "sf_demo.mean_latency_ms - P99 by api_name2 - Scale:100",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": "Millisecond",
+              "yAxis": 0
+            },
+            {
+              "displayName": "SLA Threshold",
+              "label": "C",
+              "paletteIndex": 5,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "showEventLines": true,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.mean_latency_ms').percentile(pct=99, by=['api_name2']).scale(100).publish(label='A')\nB = events(eventType='code_deploy').publish(label='B', enable=False)\nC = (A/A).scale(2800).publish(label='C', enable=False)\nD = events(eventType='DGAkhbpAgAA__P99 API Latency has suddenly changed for 1 or more services').publish(label='D')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "5m Average",
+        "id": "FFV_CKKAwAU",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "# API Calls by Customer",
+        "options": {
+          "colorBy": "Dimension",
+          "colorScale2": null,
+          "hideMissingValues": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "customer_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "customer_name2"
+              }
+            ]
+          },
+          "maximumPrecision": 4,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "None",
+          "sortBy": "-value",
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "List",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', rollup='sum').sum(by=['customer_name2']).mean(over='5m').publish(label='A')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "Thresholds",
+        "id": "FFV_DOOAwAU",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "p99 Latency  - Platinum SLA",
+        "options": {
+          "colorBy": "Scale",
+          "colorScale": null,
+          "colorScale2": [
+            {
+              "gt": 2800,
+              "gte": null,
+              "lt": null,
+              "lte": 3100,
+              "paletteIndex": 16
+            },
+            {
+              "gt": 2500,
+              "gte": null,
+              "lt": null,
+              "lte": 2800,
+              "paletteIndex": 18
+            },
+            {
+              "gt": null,
+              "gte": 2200,
+              "lt": null,
+              "lte": 2500,
+              "paletteIndex": 20
+            }
+          ],
+          "maximumPrecision": null,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "sf_demo.mean_latency_ms - Scale:100 - P99",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": "Millisecond",
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "Radial",
+          "showSparkLine": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "timestampHidden": false,
+          "type": "SingleValue",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.mean_latency_ms', filter=filter('sla', 'platinum')).scale(100).percentile(pct=99).publish(label='A')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_DOOAwAY",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Elastic History",
+        "options": {
+          "eventPublishLabelOptions": [
+            {
+              "displayName": "New Plot",
+              "label": "A",
+              "paletteIndex": null
+            }
+          ],
+          "noDataOptions": null,
+          "time": {
+            "range": 3600000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "Event"
+        },
+        "packageSpecifications": "",
+        "programText": "A = events(eventType='provision_ec2').publish(label='A')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_DOOA0AM",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "# API Calls (Last Day)",
+        "options": {
+          "colorBy": "Dimension",
+          "colorScale": null,
+          "colorScale2": null,
+          "maximumPrecision": null,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "sf_demo.num_calls - Sum - Sum(1d)",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "None",
+          "showSparkLine": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "timestampHidden": false,
+          "type": "SingleValue",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', rollup='sum').sum().sum(over='1d').publish(label='A')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_DOOA0AQ",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "# API Calls by Customer",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "AreaChart",
+          "eventPublishLabelOptions": [
+            {
+              "displayName": "New Plot",
+              "label": "B",
+              "paletteIndex": null
+            }
+          ],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": null
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "showEventLines": true,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', rollup='sum').sum(by=['customer_name2']).publish(label='A')\nB = events(eventType='code_deploy').publish(label='B')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_DjyA0AU",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "# API Calls by Service",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "AreaChart",
+          "eventPublishLabelOptions": [
+            {
+              "displayName": "code_deploy",
+              "label": "B",
+              "paletteIndex": null
+            }
+          ],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": false,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "sf_demo.num_calls - Sum by api_name2",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "showEventLines": true,
+          "stacked": true,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', rollup='sum').sum(by=['api_name2']).publish(label='A')\nB = events(eventType='code_deploy').publish(label='B')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_D7KAwAA",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "# AWS Instances",
+        "options": {
+          "colorBy": "Dimension",
+          "colorScale2": null,
+          "hideMissingValues": false,
+          "legendOptions": {
+            "fields": null
+          },
+          "maximumPrecision": null,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "Total",
+              "label": "C",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "login",
+              "label": "D",
+              "paletteIndex": 4,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "update_account",
+              "label": "E",
+              "paletteIndex": 5,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "subscribe",
+              "label": "F",
+              "paletteIndex": 6,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "Sparkline",
+          "sortBy": "-value",
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "List",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "B = events(eventType='provision_ec2').publish(label='B')\nC = data('sf_demo.num_calls',rollup='rate').mean(by=['aws_instance_id', 'service2']).count().publish(label='C')\nD = data('sf_demo.num_calls', filter=filter('service2', 'login'),rollup='rate').mean(by=['aws_instance_id']).count().publish(label='D')\nE = data('sf_demo.num_calls', filter=filter('service2', 'update_account'),rollup='rate').mean(by=['aws_instance_id']).count().publish(label='E')\nF = data('sf_demo.num_calls', filter=filter('service2', 'update_account')).mean(by=['aws_instance_id']).count().publish(label='F')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_D7OAwAI",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "p99 Latency by Customer",
+        "options": {
+          "colorBy": "Dimension",
+          "colorScale2": null,
+          "hideMissingValues": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "customer_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "customer_name2"
+              }
+            ]
+          },
+          "maximumPrecision": null,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": "Millisecond",
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "None",
+          "sortBy": "-value",
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "List",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.mean_latency_ms').percentile(pct=99, by=['customer_name2']).mean(over='5m').scale(100).publish(label='A')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_D7OA0AE",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "API Growth Rate - Customer",
+        "options": {
+          "colorBy": "Dimension",
+          "colorScale2": null,
+          "hideMissingValues": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "customer_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "customer_name2"
+              }
+            ]
+          },
+          "maximumPrecision": 3,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "",
+              "label": "B",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "",
+              "label": "C",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": "%",
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "None",
+          "sortBy": "-value",
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "List",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls',rollup='rate').sum(by=['customer_name2']).mean(over='5m').publish(label='A', enable=False)\nB = data('sf_demo.num_calls',rollup='rate').sum(by=['customer_name2']).mean(over='5m').timeshift('1h').publish(label='B', enable=False)\nC = (A/B-1).scale(1000).publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_D7RA0AU",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "API Growth Rate",
+        "options": {
+          "colorBy": "Scale",
+          "colorScale": null,
+          "colorScale2": [
+            {
+              "gt": 0.0001,
+              "gte": null,
+              "lt": null,
+              "lte": null,
+              "paletteIndex": 20
+            },
+            {
+              "gt": -6,
+              "gte": null,
+              "lt": null,
+              "lte": 0.0001,
+              "paletteIndex": 18
+            },
+            {
+              "gt": null,
+              "gte": null,
+              "lt": null,
+              "lte": -6,
+              "paletteIndex": 16
+            }
+          ],
+          "maximumPrecision": 2,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "sf_demo.num_calls - Sum - Mean(5m)",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "sf_demo.num_calls - Sum - Mean(5m) - Timeshift 1h",
+              "label": "B",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "A/B-1 - Scale:1000",
+              "label": "C",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": "",
+              "valueSuffix": "%",
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "Sparkline",
+          "showSparkLine": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "timestampHidden": false,
+          "type": "SingleValue",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls',rollup='rate').sum().mean(over='5m').publish(label='A', enable=False)\nB = data('sf_demo.num_calls',rollup='rate').sum().mean(over='5m').timeshift('1h').publish(label='B', enable=False)\nC = (A/B-1).scale(1000).publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_D7SAwAI",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "p99 Latency by Customer",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [
+            {
+              "displayName": "New Plot",
+              "label": "B",
+              "paletteIndex": null
+            }
+          ],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": null
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": "Millisecond",
+              "yAxis": 0
+            },
+            {
+              "displayName": "Platinum SLA Level",
+              "label": "C",
+              "paletteIndex": 8,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": "Millisecond",
+              "yAxis": 0
+            }
+          ],
+          "showEventLines": true,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.mean_latency_ms').percentile(pct=99, by=['customer_name2']).scale(100).publish(label='A')\nB = events(eventType='code_deploy').publish(label='B')\nC = (A/A).scale(2800).publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_D7ZA4AE",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Instance Utilization %",
+        "options": {
+          "colorBy": "Range",
+          "colorRange": {
+            "color": "#05ce00",
+            "max": null,
+            "min": null
+          },
+          "colorScale": null,
+          "colorScale2": null,
+          "groupBy": [],
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "sf_demo.num_calls - Sum by aws_instance_id",
+              "label": "A",
+              "valuePrefix": "",
+              "valueSuffix": "",
+              "valueUnit": null
+            },
+            {
+              "displayName": "sf_demo.num_calls - Sum",
+              "label": "B",
+              "valuePrefix": "",
+              "valueSuffix": "",
+              "valueUnit": null
+            },
+            {
+              "displayName": "% Utilization per Instance",
+              "label": "C",
+              "valuePrefix": "",
+              "valueSuffix": "",
+              "valueUnit": null
+            }
+          ],
+          "refreshInterval": null,
+          "sortDirection": "Ascending",
+          "sortProperty": null,
+          "time": {
+            "range": 900000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "timestampHidden": false,
+          "type": "Heatmap",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls',rollup='rate').sum(by=['aws_instance_id']).publish(label='A', enable=False)\nB = data('sf_demo.num_calls').sum().publish(label='B', enable=False)\nC = (A/B).scale(100).publish(label='C')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_FEwAwAA",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "p99 Latency by Service",
+        "options": {
+          "colorBy": "Scale",
+          "colorScale2": [
+            {
+              "gt": 1500,
+              "gte": null,
+              "lt": null,
+              "lte": 3000,
+              "paletteIndex": 16
+            },
+            {
+              "gt": null,
+              "gte": 0,
+              "lt": null,
+              "lte": 1500,
+              "paletteIndex": 20
+            }
+          ],
+          "hideMissingValues": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              }
+            ]
+          },
+          "maximumPrecision": null,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": "Millisecond",
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "Radial",
+          "sortBy": "-value",
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "List",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.mean_latency_ms').percentile(pct=99, by=['api_name2']).mean(over='5m').scale(100).publish(label='A')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_FrPA4AA",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "# AWS Instances",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": 0
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "AreaChart",
+          "eventPublishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "B",
+              "paletteIndex": null
+            }
+          ],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": null
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "showEventLines": true,
+          "stacked": true,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls',rollup='rate').mean(by=['aws_instance_id', 'service2']).count().publish(label='A')\nB = events(eventType='provision_ec2').publish(label='B')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_FrmA4AE",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "# API Calls/sec by Service",
+        "options": {
+          "colorBy": "Dimension",
+          "colorScale2": null,
+          "hideMissingValues": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              }
+            ]
+          },
+          "maximumPrecision": 4,
+          "noDataOptions": null,
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            }
+          ],
+          "refreshInterval": null,
+          "secondaryVisualization": "None",
+          "sortBy": "-value",
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "List",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', rollup='sum').sum(by=['api_name2']).mean(over='5m').publish(label='A')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    }
+  ],
+  "dashboardExport": {
+    "dashboard": {
+      "authorizedWriters": null,
+      "chartDensity": "HIGHEST",
+      "charts": [
+        {
+          "chartId": "FFV_DOOA0AM",
+          "column": 0,
+          "height": 1,
+          "row": 0,
+          "width": 3
+        },
+        {
+          "chartId": "FFV_D7OA0AE",
+          "column": 3,
+          "height": 1,
+          "row": 0,
+          "width": 3
+        },
+        {
+          "chartId": "FFV_DOOAwAU",
+          "column": 9,
+          "height": 1,
+          "row": 0,
+          "width": 3
+        },
+        {
+          "chartId": "FFV_D7RA0AU",
+          "column": 6,
+          "height": 1,
+          "row": 0,
+          "width": 3
+        },
+        {
+          "chartId": "FFV_FrmA4AE",
+          "column": 0,
+          "height": 1,
+          "row": 1,
+          "width": 3
+        },
+        {
+          "chartId": "FFV_D7ZA4AE",
+          "column": 9,
+          "height": 1,
+          "row": 1,
+          "width": 3
+        },
+        {
+          "chartId": "FFV_DjyA0AU",
+          "column": 3,
+          "height": 1,
+          "row": 1,
+          "width": 6
+        },
+        {
+          "chartId": "FFV_FEwAwAA",
+          "column": 0,
+          "height": 1,
+          "row": 2,
+          "width": 3
+        },
+        {
+          "chartId": "FFV_D7KAwAA",
+          "column": 9,
+          "height": 1,
+          "row": 2,
+          "width": 3
+        },
+        {
+          "chartId": "FFV_CKJA0AQ",
+          "column": 3,
+          "height": 1,
+          "row": 2,
+          "width": 6
+        },
+        {
+          "chartId": "FFV_CKKAwAU",
+          "column": 0,
+          "height": 1,
+          "row": 3,
+          "width": 3
+        },
+        {
+          "chartId": "FFV_FrPA4AA",
+          "column": 9,
+          "height": 1,
+          "row": 3,
+          "width": 3
+        },
+        {
+          "chartId": "FFV_DOOA0AQ",
+          "column": 3,
+          "height": 1,
+          "row": 3,
+          "width": 6
+        },
+        {
+          "chartId": "FFV_D7OAwAI",
+          "column": 0,
+          "height": 1,
+          "row": 4,
+          "width": 3
+        },
+        {
+          "chartId": "FFV_DOOAwAY",
+          "column": 9,
+          "height": 1,
+          "row": 4,
+          "width": 3
+        },
+        {
+          "chartId": "FFV_D7SAwAI",
+          "column": 3,
+          "height": 1,
+          "row": 4,
+          "width": 6
+        }
+      ],
+      "created": 0,
+      "creator": null,
+      "customProperties": null,
+      "description": "",
+      "discoveryOptions": null,
+      "eventOverlays": null,
+      "filters": {
+        "sources": null,
+        "time": null,
+        "variables": [
+          {
+            "alias": "Customer",
+            "applyIfExists": false,
+            "description": "null",
+            "preferredSuggestions": [],
+            "property": "customer_name2",
+            "propertyMappings": [
+              "customer_name2"
+            ],
+            "replaceOnly": false,
+            "required": false,
+            "restricted": false,
+            "value": ""
+          },
+          {
+            "alias": "Service",
+            "applyIfExists": false,
+            "description": "null",
+            "preferredSuggestions": [],
+            "property": "api_name2",
+            "propertyMappings": [
+              "api_name2"
+            ],
+            "replaceOnly": false,
+            "required": false,
+            "restricted": false,
+            "value": ""
+          },
+          {
+            "alias": "SLA",
+            "applyIfExists": false,
+            "description": "null",
+            "preferredSuggestions": [],
+            "property": "sla",
+            "propertyMappings": [
+              "sla"
+            ],
+            "replaceOnly": false,
+            "required": false,
+            "restricted": false,
+            "value": ""
+          }
+        ]
+      },
+      "groupId": "FFV-cgyAwAU",
+      "groupName": "Don-Business Analytics",
+      "id": "FFV_DOOAwAc",
+      "lastUpdated": 0,
+      "lastUpdatedBy": null,
+      "maxDelayOverride": null,
+      "name": "SaaS API",
+      "permissions": null,
+      "selectedEventOverlays": [],
+      "tags": null
+    }
+  },
+  "hashCode": 928739599,
+  "id": "FFV_DOOAwAc",
+  "modelVersion": 1,
+  "packageType": "DASHBOARD"
+}

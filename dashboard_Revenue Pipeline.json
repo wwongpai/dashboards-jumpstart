@@ -1,0 +1,1029 @@
+{
+  "chartExports": [
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_CHpA4AE",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Starting Cart",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              },
+              {
+                "enabled": true,
+                "property": "region"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_server_id"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Revenue",
+              "label": "D",
+              "paletteIndex": 2,
+              "plotType": "ColumnChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Latency",
+              "label": "C",
+              "paletteIndex": 8,
+              "plotType": "LineChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            },
+            {
+              "displayName": "sf_demo.mean_latency_ms - P99 by api_name3 - Scale:100",
+              "label": "E",
+              "paletteIndex": 8,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', filter=filter('api_name3', 'add_to_cart'),rollup='rate').sum().mean(over='5m').publish(label='A', enable=False)\nD = (400000/A).publish(label='D')\nC = (A*.001).publish(label='C', enable=False)\nE = data('sf_demo.mean_latency_ms', filter=filter('region', 'North America') and filter('api_name3', 'list_products')).percentile(pct=99, by=['api_name3']).scale(100).publish(label='E')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_CHpA4AI",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Starting Cart",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              },
+              {
+                "enabled": true,
+                "property": "region"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_server_id"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Revenue",
+              "label": "D",
+              "paletteIndex": 2,
+              "plotType": "ColumnChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Latency",
+              "label": "C",
+              "paletteIndex": 8,
+              "plotType": "LineChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            },
+            {
+              "displayName": "sf_demo.mean_latency_ms - Mean(5m) - Scale:100 - Timeshift 1h",
+              "label": "E",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', filter=filter('api_name3', 'checkout'),rollup='rate').sum().mean(over='5m').timeshift('1h').publish(label='A', enable=False)\nD = (600000/A).publish(label='D')\nC = (A*.001).publish(label='C', enable=False)\nE = data('sf_demo.mean_latency_ms', filter=filter('region', 'North America') and filter('api_name3', 'list_products')).mean(over='5m').scale(100).timeshift('1h').publish(label='E')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_CzwA0AQ",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Upsell",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              },
+              {
+                "enabled": true,
+                "property": "region"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_server_id"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Revenue",
+              "label": "D",
+              "paletteIndex": 7,
+              "plotType": "ColumnChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Latency",
+              "label": "C",
+              "paletteIndex": 8,
+              "plotType": "LineChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            },
+            {
+              "displayName": "sf_demo.mean_latency_ms - Mean(5m) - Timeshift 1h - Scale:100",
+              "label": "E",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', filter=filter('api_name3', 'add_to_cart'),rollup='rate').sum().mean(over='5m').publish(label='A', enable=False)\nD = (100000/A).publish(label='D')\nC = (A*.001).publish(label='C', enable=False)\nE = data('sf_demo.mean_latency_ms', filter=filter('region', 'North America') and filter('api_name3', 'list_products')).mean(over='5m').timeshift('1h').scale(100).publish(label='E')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_CzxAwAI",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Average Order",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              },
+              {
+                "enabled": true,
+                "property": "region"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "700000/A",
+              "label": "C",
+              "paletteIndex": 13,
+              "plotType": "ColumnChart",
+              "valuePrefix": "$",
+              "valueSuffix": "dollars",
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "sf_demo.mean_latency_ms - Mean(5m) - Timeshift 1h - Scale:100",
+              "label": "D",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', filter=filter('api_name3', 'checkout'),rollup='rate').sum().mean(over='5m').publish(label='A', enable=False)\nC = (700000/A).publish(label='C')\nD = data('sf_demo.mean_latency_ms', filter=filter('region', 'North America') and filter('api_name3', 'list_products')).mean(over='5m').timeshift('1h').scale(100).publish(label='D')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_De6AwAw",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Checkout",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              },
+              {
+                "enabled": true,
+                "property": "region"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "500000/A",
+              "label": "C",
+              "paletteIndex": 13,
+              "plotType": "ColumnChart",
+              "valuePrefix": "$",
+              "valueSuffix": "dollars",
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "sf_demo.mean_latency_ms - P99 by api_name3 - Scale:100",
+              "label": "D",
+              "paletteIndex": 8,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', filter=filter('api_name3', 'list_products'),rollup='rate').sum().mean(over='5m').publish(label='A', enable=False)\nC = (500000/A).publish(label='C')\nD = data('sf_demo.mean_latency_ms', filter=filter('region', 'North America') and filter('api_name3', 'list_products')).percentile(pct=99, by=['api_name3']).scale(100).publish(label='D')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_DjwAwAA",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "HISTORICAL REVENUE PIPELINE",
+        "options": {
+          "markdown": "Historical Look back across each segment of the revenue pipeline .  <br>\nPerformance line drawn over revenue bar charts to correlate latency impact to revenue.",
+          "type": "Text"
+        },
+        "packageSpecifications": "",
+        "programText": "",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_E_BA0AA",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "CURRENT REVENUE PIPELINE",
+        "options": {
+          "markdown": "Current across each segment of the revenue pipeline .  <br>\nPerformance line drawn over revenue bar charts to correlate latency impact to revenue.",
+          "type": "Text"
+        },
+        "packageSpecifications": "",
+        "programText": "",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    },
+    {
+      "chart": {
+        "created": 0,
+        "creator": null,
+        "customProperties": {},
+        "description": "",
+        "id": "FFV_FVhA4AA",
+        "lastUpdated": 0,
+        "lastUpdatedBy": null,
+        "name": "Upsell",
+        "options": {
+          "areaChartOptions": {
+            "showDataMarkers": false
+          },
+          "axes": [
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            },
+            {
+              "highWatermark": null,
+              "highWatermarkLabel": null,
+              "label": "",
+              "lowWatermark": null,
+              "lowWatermarkLabel": null,
+              "max": null,
+              "min": null
+            }
+          ],
+          "axisPrecision": null,
+          "colorBy": "Dimension",
+          "defaultPlotType": "LineChart",
+          "eventPublishLabelOptions": [],
+          "histogramChartOptions": {
+            "colorThemeIndex": 16
+          },
+          "includeZero": false,
+          "legendOptions": {
+            "fields": [
+              {
+                "enabled": true,
+                "property": "api_name"
+              },
+              {
+                "enabled": false,
+                "property": "sf_originatingMetric"
+              },
+              {
+                "enabled": false,
+                "property": "sf_metric"
+              },
+              {
+                "enabled": true,
+                "property": "api_name2"
+              },
+              {
+                "enabled": true,
+                "property": "api_name3"
+              },
+              {
+                "enabled": true,
+                "property": "region"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_api_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_customer_id"
+              },
+              {
+                "enabled": true,
+                "property": "sfdemo_server_id"
+              }
+            ]
+          },
+          "lineChartOptions": {
+            "showDataMarkers": false
+          },
+          "noDataOptions": null,
+          "onChartLegendOptions": {
+            "dimensionInLegend": null,
+            "showLegend": false
+          },
+          "programOptions": {
+            "disableSampling": false,
+            "maxDelay": null,
+            "minimumResolution": 0,
+            "timezone": null
+          },
+          "publishLabelOptions": [
+            {
+              "displayName": "",
+              "label": "A",
+              "paletteIndex": null,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Revenue",
+              "label": "D",
+              "paletteIndex": 7,
+              "plotType": "ColumnChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 0
+            },
+            {
+              "displayName": "Latency",
+              "label": "C",
+              "paletteIndex": 8,
+              "plotType": "LineChart",
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            },
+            {
+              "displayName": "sf_demo.mean_latency_ms - Scale:100 - P99 by api_name3",
+              "label": "E",
+              "paletteIndex": 8,
+              "plotType": null,
+              "valuePrefix": null,
+              "valueSuffix": null,
+              "valueUnit": null,
+              "yAxis": 1
+            }
+          ],
+          "showEventLines": false,
+          "stacked": false,
+          "time": {
+            "range": 300000,
+            "rangeEnd": 0,
+            "type": "relative"
+          },
+          "type": "TimeSeriesChart",
+          "unitPrefix": "Metric"
+        },
+        "packageSpecifications": "",
+        "programText": "A = data('sf_demo.num_calls', filter=filter('api_name3', 'checkout'),rollup='rate').sum().mean(over='5m').publish(label='A', enable=False)\nD = (80000/A).publish(label='D')\nC = (A*.001).publish(label='C', enable=False)\nE = data('sf_demo.mean_latency_ms', filter=filter('region', 'North America') and filter('api_name3', 'list_products')).scale(100).percentile(pct=99, by=['api_name3']).publish(label='E')",
+        "relatedDetectorIds": [],
+        "tags": null
+      }
+    }
+  ],
+  "dashboardExport": {
+    "dashboard": {
+      "authorizedWriters": null,
+      "chartDensity": "DEFAULT",
+      "charts": [
+        {
+          "chartId": "FFV_E_BA0AA",
+          "column": 6,
+          "height": 1,
+          "row": 0,
+          "width": 6
+        },
+        {
+          "chartId": "FFV_DjwAwAA",
+          "column": 0,
+          "height": 1,
+          "row": 0,
+          "width": 6
+        },
+        {
+          "chartId": "FFV_CHpA4AE",
+          "column": 0,
+          "height": 1,
+          "row": 1,
+          "width": 6
+        },
+        {
+          "chartId": "FFV_CHpA4AI",
+          "column": 6,
+          "height": 1,
+          "row": 1,
+          "width": 6
+        },
+        {
+          "chartId": "FFV_FVhA4AA",
+          "column": 0,
+          "height": 1,
+          "row": 2,
+          "width": 6
+        },
+        {
+          "chartId": "FFV_CzwA0AQ",
+          "column": 6,
+          "height": 1,
+          "row": 2,
+          "width": 6
+        },
+        {
+          "chartId": "FFV_De6AwAw",
+          "column": 0,
+          "height": 1,
+          "row": 3,
+          "width": 6
+        },
+        {
+          "chartId": "FFV_CzxAwAI",
+          "column": 6,
+          "height": 1,
+          "row": 3,
+          "width": 6
+        }
+      ],
+      "created": 0,
+      "creator": null,
+      "customProperties": null,
+      "description": "",
+      "discoveryOptions": null,
+      "eventOverlays": null,
+      "filters": {
+        "sources": null,
+        "time": null,
+        "variables": null
+      },
+      "groupId": "FFV-cgyAwAU",
+      "groupName": "Don-Business Analytics",
+      "id": "FFV_De6AwA0",
+      "lastUpdated": 0,
+      "lastUpdatedBy": null,
+      "maxDelayOverride": null,
+      "name": "Revenue Pipeline",
+      "permissions": null,
+      "selectedEventOverlays": [],
+      "tags": null
+    }
+  },
+  "hashCode": -1524419801,
+  "id": "FFV_De6AwA0",
+  "modelVersion": 1,
+  "packageType": "DASHBOARD"
+}
